@@ -17,28 +17,53 @@ const mappingTemplate = {
   gender: "gender"
 };
 
-router.get("/mapKeys", async (req, res) => {
+module.exports = async function mapkeys(req, res, next) {
   try {
     const data = await Data.find({});
     const mappedData = data.map((item) => lodash.mapKeys(item.toObject(), (value, key) => mappingTemplate[key] || key));
-    res.status(200).send(mappedData);
+    next(mappedData);
   } catch (err) {
     console.error(err);
     res.status(500).send({ message: "Error fetching data", err });
   }
-});
+  next();
+}
 
-router.get("/mapKeys/:clientId", async (req, res) => {
+module.exports = async function mapKeysClientId(req, res, next) {
   try{
     const client = await Client.findById(req.params.clientId);
     const data = await Data.find({});
     const mappedData = data.map((item) => lodash.mapKeys(item.toObject(), (value, key) => client.mappedData[key] || key));
-    res.status(200).send(mappedData);
+    next(mappedData);
   }
   catch(err){
     console.error(err);
     res.status(500).send({ message: "Error fetching data", err });
   }
-});
+}
 
-module.exports = router;
+// router.get("/mapKeys", async (req, res) => {
+//   try {
+//     const data = await Data.find({});
+//     const mappedData = data.map((item) => lodash.mapKeys(item.toObject(), (value, key) => mappingTemplate[key] || key));
+//     res.status(200).send(mappedData);
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).send({ message: "Error fetching data", err });
+//   }
+// });
+
+// router.get("/mapKeys/:clientId", async (req, res) => {
+//   try{
+//     const client = await Client.findById(req.params.clientId);
+//     const data = await Data.find({});
+//     const mappedData = data.map((item) => lodash.mapKeys(item.toObject(), (value, key) => client.mappedData[key] || key));
+//     res.status(200).send(mappedData);
+//   }
+//   catch(err){
+//     console.error(err);
+//     res.status(500).send({ message: "Error fetching data", err });
+//   }
+// });
+
+// module.exports = router;

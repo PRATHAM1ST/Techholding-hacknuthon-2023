@@ -55,9 +55,15 @@ const schema = new GraphQLSchema({
   query: RootQueryType,
 })
 
-router.post('/graphql', expressGraphQL({
-  schema: schema,
-  graphiql: true
-}));
+module.exports =  async function graphqltojson(req, res, next) {
+  console.log(req.client);
+  expressGraphQL({
+    schema: schema,
+    graphiql: true
+  })
+  next();
+}
 
-module.exports = router;
+// router.post('/graphql', );
+
+// module.exports = router;

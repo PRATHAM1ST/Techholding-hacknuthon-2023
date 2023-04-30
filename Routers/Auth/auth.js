@@ -15,7 +15,7 @@ router.use(async (req, res, next) => {
         return res.status(401).send({ error: "Unauthorized" });
     }
     req.client = client;
-    next();
+    next(client);
 });
 
 module.exports = router;
