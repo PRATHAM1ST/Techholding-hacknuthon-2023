@@ -7,6 +7,10 @@ const dbconnet = require("./Database/Connection");
 
 dbconnet();
 
+app.get("/", (req, res) => {
+	res.send("Hello World!");
+});
+
 app.use(express.json());
 app.use(xmlbodyparser());
 
@@ -30,8 +34,6 @@ app.use(xmltojsonRouter);
 app.use(mappingRouter);
 app.use(graphqltojsonRouter);
 
-app.get("/", (req, res) => {
-	res.send("Hello World!");
-});
+
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
