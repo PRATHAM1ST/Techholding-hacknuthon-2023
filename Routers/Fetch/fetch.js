@@ -62,7 +62,7 @@ router.get("/user/:id", async (req, res) => {
 
 
 // Endpoint for returning all users
-router.get("/", async (req, res) => {
+router.get("/users", async (req, res) => {
 	try {
 		const data = await User.find({});
 		res.status(200).send({ users: data });

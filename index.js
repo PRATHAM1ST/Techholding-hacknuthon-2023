@@ -30,7 +30,7 @@ const xmltojsonRouter = require("./Middleware/xmltojson");
 const mappingRouter = require("./Middleware/mapping");
 const graphqltojsonRouter = require("./Middleware/graphqltojson");
 
-// app.use(authRouter);
+app.use(authRouter);
 
 app.use(fetchingRouter);
 app.use(creatingRouter);

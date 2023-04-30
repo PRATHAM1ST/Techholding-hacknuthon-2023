@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../../Database/DataSchema");
 const Client = require("../../Database/ClientSchema");
+var sha512 = require('js-sha512');
 
 // Endpoint for creating a user
 router.post("/user", async (req, res) => {
@@ -18,7 +19,7 @@ router.post("/user", async (req, res) => {
 // Endpoint for creating a new client
 router.post("/client", async (req, res) => {
 	try {
-	  const newClient = new Client(req.body);
+	  const newClient = new Client({...req.body, token: sha512(`${req.username}${req.password}`)});
 	  const savedClient = await newClient.save();
 	  res.status(200).send(savedClient);
 	} catch (err) {
