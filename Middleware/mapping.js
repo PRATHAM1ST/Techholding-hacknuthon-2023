@@ -28,7 +28,7 @@ router.get("/mapKeys", async (req, res) => {
   }
 });
 
-router.post("/mapKeys/:clientId", async (req, res) => {
+router.get("/mapKeys/:clientId", async (req, res) => {
   try{
     const client = await Client.findById(req.params.clientId);
     const data = await Data.find({});
