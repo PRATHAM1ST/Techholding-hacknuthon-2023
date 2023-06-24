@@ -2,6 +2,10 @@
 
 This project is a submission for Hacknuthon 4.0 by Team Quad.js. It consists of a Node.js application built using Express.js and GraphQL. The application provides various routes and functionalities for creating, updating, deleting, and fetching user data.
 
+## Devfolio Link
+
+https://devfolio.co/projects/synchrobridge-627a
+
 ## Prerequisites
 
 Before running the project, make sure you have the following dependencies installed:
