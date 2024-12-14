@@ -6,8 +6,7 @@ This project is a submission for Hacknuthon 4.0 by Team Quad.js. It consists of 
 
 https://devfolio.co/projects/synchrobridge-627a
 
-## Prerequisites
-
+## Prerequisites importanat
 Before running the project, make sure you have the following dependencies installed:
 
 - Node.js
